@@ -15,6 +15,7 @@ ZSH_THEME="spaceship"
 SPACESHIP_PACKAGE_SHOW="false"
 
 export EDITOR="vim"
+export VISUAL=${EDITOR}
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"

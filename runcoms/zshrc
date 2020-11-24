@@ -22,3 +22,9 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
+
+alias list_ec2_prod="aws ec2 describe-instances --region us-west-2 --filter 'Name=instance-state-name,Values=running' 'Name=tag:aws:autoscaling:groupName,Values=*PlatformAutoscaling-Production*' --query 'Reservations[*].Instances[*].{IP:PrivateIpAddress}' --output text"
+alias list_ec2_ci="aws ec2 describe-instances --region us-west-2 --filter 'Name=instance-state-name,Values=running' 'Name=tag:aws:autoscaling:groupName,Values=*PlatformAutoscaling-CI*' --query 'Reservations[*].Instances[*].{IP:PrivateIpAddress}' --output text"
+alias list_dj_ci="aws ec2 describe-instances --region us-west-2 --filter 'Name=instance-state-name,Values=running' 'Name=tag:groupName,Values=*DelayedJob-CI*' --query 'Reservations[*].Instances[*].{IP:PrivateIpAddress}' --output text"
+alias list_dj_prod="aws ec2 describe-instances --region us-west-2 --filter 'Name=instance-state-name,Values=running' 'Name=tag:Role,Values=DelayedJob-Production' --query 'Reservations[*].Instances[*].{IP:PrivateIpAddress}' --output text"
+
